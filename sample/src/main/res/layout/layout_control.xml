@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="primaryEdgeSpace"/>
+
+            <EditText
+                    android:textSize="14sp"
+                    android:text="20"
+                    android:inputType="numberDecimal"
+                    android:id="@+id/mEtPrimaryEdge"
+                    android:layout_width="35dp"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="secondaryEdgeSpace"/>
+
+            <EditText
+                    android:textSize="14sp"
+                    android:text="12"
+                    android:inputType="numberDecimal"
+                    android:id="@+id/mEtSecondaryEdge"
+                    android:layout_width="35dp"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="primarySpace"/>
+
+            <EditText
+                    android:id="@+id/mEtPrimary"
+                    android:layout_width="35dp"
+                    android:text="4"
+                    android:textSize="14sp"
+                    android:inputType="numberDecimal"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="secondarySpace"/>
+
+            <EditText
+                    android:inputType="numberDecimal"
+                    android:id="@+id/mEtSecondary"
+                    android:text="10"
+                    android:textSize="14sp"
+                    android:layout_width="35dp"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+        <RadioGroup
+                android:id="@+id/mGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <RadioButton
+                    android:id="@+id/mBtnVertical"
+                    android:layout_width="wrap_content"
+                    android:checked="true"
+                    android:layout_height="wrap_content"
+                    android:text="vertical"/>
+
+            <RadioButton
+                    android:id="@+id/mBtnHorizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="horizontal"/>
+        </RadioGroup>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+            <CheckBox
+                    android:id="@+id/mCheckReverse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="isReverseLayout"/>
+
+            <CheckBox
+                    android:id="@+id/mCheckSpan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="mCheckSpan"/>
+
+        </LinearLayout>
+
+
+        <Button
+                android:id="@+id/mBtnUpdate"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="update"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>
