@@ -47,8 +47,8 @@ publish {
     groupId = 'cc.wecando'// jcenter上的路径
     artifactId = 'SuperDecoration'  // 仓库里面的名称
 //    uploadName = 'SuperDecoration'
-    publishVersion = '1.0.0'
-    desc = 'Super ItemDecoration for RecyclerView'
-    website = 'wecando.cc'
+    publishVersion = '1.0.1'
+    desc = 'Super ItemDecoration for RecyclerView, Support LinearLayoutManager and GridLayoutManager!'
+    website = 'https://github.com/sh1tge/SuperDecoration'
     licences = ['Apache-2.0']
 }
