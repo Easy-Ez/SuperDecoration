@@ -1,13 +1,14 @@
 # SuperDecoration
 [ ![Download](https://api.bintray.com/packages/staticsadhu/android/SuperDecoration/images/download.svg?version=1.0.1) ](https://bintray.com/staticsadhu/android/SuperDecoration/1.0.1/link) [![Build Status](https://travis-ci.org/sh1tge/SuperDecoration.svg?branch=master)](https://travis-ci.org/sh1tge/SuperDecoration)
 
-快速设置`LinearLayoutManager`,`GridLayoutManager`item间间距
+快速设置`RecyclerView`item间间距
 
 # 特性
-1. 支持单行或当列情况
-2. 支持`reverseLayout==true`情况
-3. 支持`GridLayoutManager`设置了`SpanSizeLookup`情况
-4. 灵活设置各种间距
+1. 支持`LinearLayoutManager`,`GridLayoutManager`
+2. 支持单行或单列情况
+3. 支持`reverseLayout==true`情况
+4. 支持`GridLayoutManager`设置了`SpanSizeLookup`情况
+5. 灵活设置各种间距
 
 
 # sample截图
