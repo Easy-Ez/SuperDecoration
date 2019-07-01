@@ -6,3 +6,5 @@ android:
     - android-28
 before_install:
   - chmod +x gradlew
+script:
+      - ./gradlew assembleRelease
