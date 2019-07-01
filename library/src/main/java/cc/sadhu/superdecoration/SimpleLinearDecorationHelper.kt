@@ -25,14 +25,14 @@ abstract class SimpleLinearDecorationHelper(
             } else {
                 // 首行
                 when (childAdapterPosition) {
-                    0 -> // 第一个要设置PaddingTop
+                    0 -> // 第一个要设置marginTop
                         outRect.set(
                             mInfo.secondaryEdgeSpace.toInt(),
                             if (mLayoutManager.reverseLayout) (mInfo.primarySpace / 2).toInt() else mInfo.primaryEdgeSpace.toInt(),
                             mInfo.secondaryEdgeSpace.toInt(),
                             if (mLayoutManager.reverseLayout) mInfo.primaryEdgeSpace.toInt() else (mInfo.primarySpace / 2).toInt()
                         )
-                    itemCount - 1 -> // 最后一行要设置PaddingBottom
+                    itemCount - 1 -> // 最后一行要设置marginBottom
                         outRect.set(
                             mInfo.secondaryEdgeSpace.toInt(),
                             if (mLayoutManager.reverseLayout) mInfo.primaryEdgeSpace.toInt() else (mInfo.primarySpace / 2).toInt(),
@@ -59,14 +59,14 @@ abstract class SimpleLinearDecorationHelper(
             } else {
                 // 首行
                 when (childAdapterPosition) {
-                    0 -> // 第一个要设置PaddingLeft
+                    0 -> // 第一个要设置marginLeft
                         outRect.set(
                             if (mLayoutManager.reverseLayout) (mInfo.primarySpace / 2).toInt() else mInfo.primaryEdgeSpace.toInt(),
                             mInfo.secondaryEdgeSpace.toInt(),
                             if (mLayoutManager.reverseLayout) mInfo.primaryEdgeSpace.toInt() else (mInfo.primarySpace / 2).toInt(),
                             mInfo.secondaryEdgeSpace.toInt()
                         )
-                    itemCount - 1 -> // 最后一行要设置PaddingRight
+                    itemCount - 1 -> // 最后一行要设置marginRight
                         outRect.set(
                             if (mLayoutManager.reverseLayout) mInfo.primaryEdgeSpace.toInt() else (mInfo.primarySpace / 2).toInt(),
                             mInfo.secondaryEdgeSpace.toInt(),
