@@ -17,6 +17,24 @@
 |<img src="http://blog.wecando.cc/image/20190701/FplFo6vP5gGbdJg-FRcomOFTc-Vy.png" width="540"/>|<img src="http://blog.wecando.cc/image/20190701/FoJW9iWBej5g7h-w0_c1U_pF-wmm.png" width="540"/>|<img src="http://blog.wecando.cc/image/20190701/FgMJJIIUzWEU7k4TpsezXdbeBMX8.png" width="540"/>|
 
 # 使用实例
+
+1. 引用库
+
+```xml
+  // 1.添加jcenter仓库
+    allprojects {
+        repositories {
+           jcenter()
+        }
+    }
+    // 2.添加项目依赖（last-version替换为最新版本号）
+    dependencies {
+         implementation "cc.wecando:SuperDecoration:${last-version}"
+        implementation 'com.github.ParfoisMeng:SlideBack:last-version'
+    }
+```
+2. 使用
+
 ```kotlin
         mRvContent.addItemDecoration(
             SuperOffsetDecoration.Builder(layoutManager, this)
