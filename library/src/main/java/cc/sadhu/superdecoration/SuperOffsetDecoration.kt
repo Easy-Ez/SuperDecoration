@@ -19,8 +19,7 @@ class SuperOffsetDecoration(builder: Builder) :
             builder.mPrimaryEdgeSpace,
             builder.mSecondaryEdgeSpace
         )
-        mOrientationDecorationHelper =
-            builder.mOrientationDecorationHelper ?: OrientationDecorationHelper.createOrientationDecorationHelper(
+        mOrientationDecorationHelper =  OrientationDecorationHelper.createOrientationDecorationHelper(
                 info,
                 builder.layoutManager
             )
@@ -42,13 +41,7 @@ class SuperOffsetDecoration(builder: Builder) :
         internal var mSecondaryEdgeSpace = 0F
         internal var mPrimarySpace = 0F
         internal var mSecondarySpace = 0F
-        internal var mOrientationDecorationHelper: OrientationDecorationHelper? = null
 
-
-        fun setOrientationDecorationHelper(helper: OrientationDecorationHelper): SuperOffsetDecoration {
-            this.mOrientationDecorationHelper = helper
-            return SuperOffsetDecoration(this)
-        }
 
         fun setPrimarySpace(primarySpace: Float): Builder {
             this.mPrimarySpace = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, primarySpace, displayMetrics)
