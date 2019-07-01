@@ -1,4 +1,5 @@
 # SuperDecoration
+[ ![Download](https://api.bintray.com/packages/staticsadhu/android/SuperDecoration/images/download.svg?version=1.0.1) ](https://bintray.com/staticsadhu/android/SuperDecoration/1.0.1/link)
 
 快速设置`LinearLayoutManager`,`GridLayoutManager`item间间距
 
