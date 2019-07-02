@@ -38,10 +38,10 @@
 ```kotlin
         mRvContent.addItemDecoration(
             SuperOffsetDecoration.Builder(layoutManager, this)
-                .setPrimarySpace(12F) // 设置与orientation同方向,RecyclerView内间距,orientation为vertical时, 表示 paddingTop,paddingBottom
-                .setSecondarySpace(10F)// 设置与orientation垂直方向,RecyclerView内间距,orientation为vertical时, 表示 paddingLeft,paddingRight
-                .setPrimaryEdgeSpace(8F)// 设置与orientation同方向,ItemView的间距
-                .setSecondaryEdgeSpace(4F)// 设置与orientation垂直方向,ItemView的间距, LinearLayoutManager无效
+                .setPrimaryEdgeSpace(12F) // 设置与orientation同方向,RecyclerView内间距,orientation为vertical时, 表示 paddingTop,paddingBottom
+                .setSecondaryEdgeSpace(10F)// 设置与orientation垂直方向,RecyclerView内间距,orientation为vertical时, 表示 paddingLeft,paddingRight
+                .setPrimarySpace(8F)// 设置与orientation同方向,ItemView的间距
+                .setSecondarySpace(4F)// 设置与orientation垂直方向,ItemView的间距, LinearLayoutManager无效
                 .build()
         )
 
@@ -51,7 +51,7 @@
 
 | 名称        |     说明      | 
 | :-------------: |:-------------:|
-|setPrimarySpace|  设置与orientation同方向,RecyclerView内间距|
-|setSecondarySpace| 设置与orientation垂直方向,RecyclerView内间距|
-|setPrimaryEdgeSpace| 设置与orientation同方向,ItemView的间距|
-|setSecondaryEdgeSpace| 设置与orientation垂直方向,ItemView的间距, LinearLayoutManager无效|
+|setPrimaryEdgeSpace|  设置与orientation同方向,RecyclerView内间距|
+|setSecondaryEdgeSpace| 设置与orientation垂直方向,RecyclerView内间距|
+|setPrimarySpace| 设置与orientation同方向,ItemView的间距|
+|setSecondarySpace| 设置与orientation垂直方向,ItemView的间距, LinearLayoutManager无效|
