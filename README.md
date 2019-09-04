@@ -1,5 +1,5 @@
 # SuperDecoration
-[ ![Download](https://api.bintray.com/packages/staticsadhu/android/SuperDecoration/images/download.svg?version=1.0.1) ](https://bintray.com/staticsadhu/android/SuperDecoration/1.0.1/link) [![Build Status](https://travis-ci.org/sh1tge/SuperDecoration.svg?branch=master)](https://travis-ci.org/sh1tge/SuperDecoration)
+[ ![Download](https://api.bintray.com/packages/staticsadhu/android/SuperDecoration/images/download.svg?version=1.0.2) ](https://bintray.com/staticsadhu/android/SuperDecoration/1.0.1/link) [![Build Status](https://travis-ci.org/sh1tge/SuperDecoration.svg?branch=master)](https://travis-ci.org/sh1tge/SuperDecoration)
 
 快速设置`RecyclerView`item间间距, 配合此篇文章食用,味道更佳[戳我](https://www.wecando.cc/article/9)
 

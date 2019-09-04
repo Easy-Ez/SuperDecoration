@@ -9,7 +9,7 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -47,7 +47,7 @@ publish {
     groupId = 'cc.wecando'// jcenter上的路径
     artifactId = 'SuperDecoration'  // 仓库里面的名称
 //    uploadName = 'SuperDecoration'
-    publishVersion = '1.0.1'
+    publishVersion = '1.0.2'
     desc = 'Super ItemDecoration for RecyclerView, Support LinearLayoutManager and GridLayoutManager!'
     website = 'https://github.com/sh1tge/SuperDecoration'
     licences = ['Apache-2.0']
