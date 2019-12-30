@@ -8,6 +8,7 @@ import cc.sadhu.sample.R
 import cc.sadhu.sample.adapter.SimpleAdapter
 import cc.sadhu.sample.bean.Item
 import cc.sadhu.superdecoration.SuperOffsetDecoration
+import cc.sadhu.superdecoration.UIUtils
 import kotlinx.android.synthetic.main.activity_linear.*
 import kotlinx.android.synthetic.main.layout_control.*
 import kotlin.random.Random
@@ -39,10 +40,10 @@ class GridActivity : AppCompatActivity() {
         mRvContent.removeItemDecorationAt(0)
         mRvContent.addItemDecoration(
             SuperOffsetDecoration.Builder(layoutManager, this)
-                .setPrimarySpace(mEtPrimary.text.toString().toFloat())
-                .setSecondarySpace(mEtSecondary.text.toString().toFloat())
-                .setPrimaryEdgeSpace(mEtPrimaryEdge.text.toString().toFloat())
-                .setSecondaryEdgeSpace(mEtSecondaryEdge.text.toString().toFloat())
+                .setMainAxisSpace(UIUtils.dp2px(mEtMainAxis.text.toString().toInt()))
+                .setCrossAxisSpace(UIUtils.dp2px(mEtCrossAxis.text.toString().toInt()))
+                .setMainAxisEdgeSpace(UIUtils.dp2px(mEtMainAxisEdge.text.toString().toInt()))
+                .setCrossAxisEdgeSpace(UIUtils.dp2px(mEtCrossAxisEdge.text.toString().toInt()))
                 .build()
         )
         // 判断方向是否改变, 方向改变了需要更换item的布局文件
@@ -71,10 +72,10 @@ class GridActivity : AppCompatActivity() {
         mRvContent.layoutManager = layoutManager
         mRvContent.addItemDecoration(
             SuperOffsetDecoration.Builder(layoutManager, this)
-                .setPrimarySpace(mEtPrimary.text.toString().toFloat())
-                .setSecondarySpace(mEtSecondary.text.toString().toFloat())
-                .setPrimaryEdgeSpace(mEtPrimaryEdge.text.toString().toFloat())
-                .setSecondaryEdgeSpace(mEtSecondaryEdge.text.toString().toFloat())
+                .setMainAxisSpace(UIUtils.dp2px(mEtMainAxis.text.toString().toInt()))
+                .setCrossAxisSpace(UIUtils.dp2px(mEtCrossAxis.text.toString().toInt()))
+                .setMainAxisEdgeSpace(UIUtils.dp2px(mEtMainAxisEdge.text.toString().toInt()))
+                .setCrossAxisEdgeSpace(UIUtils.dp2px(mEtCrossAxisEdge.text.toString().toInt()))
                 .build()
         )
         val list = mutableListOf<Item>()

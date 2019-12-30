@@ -1,70 +1,118 @@
 package cc.sadhu.superdecoration
 
 import android.content.Context
+import android.graphics.Canvas
 import android.graphics.Rect
 import android.util.TypedValue
 import android.view.View
+import androidx.annotation.ColorInt
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import cc.sadhu.neteasecloudmusic.view.derocation.SpaceInfoData
 
-class SuperOffsetDecoration(builder: Builder) :
+
+class SuperOffsetDecoration(private val builder: Builder) :
     RecyclerView.ItemDecoration() {
-    private var mOrientationDecorationHelper: OrientationDecorationHelper
-
-    init {
-        val info = SpaceInfoData(
-            builder.mPrimarySpace,
-            builder.mSecondarySpace,
-            builder.mPrimaryEdgeSpace,
-            builder.mSecondaryEdgeSpace
+    private var mOrientationDecorationHelper =
+        OrientationDecorationHelper.createOrientationDecorationHelper(
+            builder,
+            builder.layoutManager
         )
-        mOrientationDecorationHelper =  OrientationDecorationHelper.createOrientationDecorationHelper(
-                info,
-                builder.layoutManager
-            )
-    }
 
 
-    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
         val adapter = parent.adapter
         val itemCount = adapter?.itemCount ?: 0
         val childAdapterPosition = parent.getChildAdapterPosition(view)
-        if (itemCount > 0 && mOrientationDecorationHelper.needOffset(outRect, view, parent)) {
+        if (itemCount > 0 && mOrientationDecorationHelper.needOffset(view, parent)) {
             mOrientationDecorationHelper.setOffset(outRect, childAdapterPosition, itemCount)
+        }
+    }
+
+
+    override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+        super.onDraw(c, parent, state)
+        val childCount = parent.childCount
+        if (childCount > 1 && builder.mDividerMode) {
+            mOrientationDecorationHelper.drawDivide(c, builder, parent, state)
         }
     }
 
     class Builder(internal val layoutManager: LinearLayoutManager, internal val context: Context) {
         private val displayMetrics = context.resources.displayMetrics
-        internal var mPrimaryEdgeSpace = 0F
-        internal var mSecondaryEdgeSpace = 0F
-        internal var mPrimarySpace = 0F
-        internal var mSecondarySpace = 0F
+        internal var mMainAxisEdgeSpace = 0
+        internal var mCrossAxisEdgeSpace = 0
+        internal var mMainAxisSpace = 0
+        internal var mCrossAxisSpace = 0
+        @ColorInt
+        internal var mDividerColor: Int = 0xFFF0F0F1.toInt()
+        @ColorInt
+        internal var mBackgroundColor: Int = 0xFFFFFFFF.toInt()
+        internal var paddingLeft = 0
+        internal var paddingRight = 0
+        internal var mDividerMode = false// 是否画分割线
+
+//mainAxisAlignment and crossAxisAlignment
 
 
-        fun setPrimarySpace(primarySpace: Float): Builder {
-            this.mPrimarySpace = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, primarySpace, displayMetrics)
+        fun setMainAxisSpace(mainAxisASpace: Int): Builder {
+            this.mMainAxisSpace = mainAxisASpace
             return this
         }
 
-        fun setSecondarySpace(secondarySpace: Float): Builder {
-            this.mSecondarySpace =
-                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, secondarySpace, displayMetrics)
+        fun setCrossAxisSpace(crossAxisSpace: Int): Builder {
+            this.mCrossAxisSpace =
+                crossAxisSpace
             return this
         }
 
-        fun setPrimaryEdgeSpace(primaryEdgeSpace: Float): Builder {
-            this.mPrimaryEdgeSpace =
-                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, primaryEdgeSpace, displayMetrics)
+        fun setMainAxisEdgeSpace(mainAxisEdgeSpace: Int): Builder {
+            this.mMainAxisEdgeSpace =
+                mainAxisEdgeSpace
             return this
         }
 
-        fun setSecondaryEdgeSpace(secondaryEdgeSpace: Float): Builder {
-            this.mSecondaryEdgeSpace =
-                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, secondaryEdgeSpace, displayMetrics)
+        fun setCrossAxisEdgeSpace(crossAxisEdgeSpace: Int): Builder {
+            this.mCrossAxisEdgeSpace =
+                crossAxisEdgeSpace
             return this
         }
+
+        fun toggleDividerMode(showDivider: Boolean): Builder {
+            this.mDividerMode = showDivider
+            return this
+        }
+
+        fun setPading(padding: Int): Builder {
+            this.paddingLeft = padding
+            this.paddingRight = padding
+            return this
+        }
+
+        fun setPaddingLeft(padding: Int): Builder {
+            this.paddingLeft = padding
+            return this
+        }
+
+        fun setPaddingRight(padding: Int): Builder {
+            this.paddingRight = padding
+            return this
+        }
+
+        fun setDividerColor(@ColorInt color: Int): Builder {
+            this.mDividerColor = color
+            return this
+        }
+
+        fun setBackgroundColor(@ColorInt color: Int): Builder {
+            this.mBackgroundColor = color
+            return this
+        }
+
 
         fun build(): SuperOffsetDecoration {
             return SuperOffsetDecoration(this)

@@ -1,6 +1,5 @@
 # SuperDecoration
-[ ![Download](https://api.bintray.com/packages/staticsadhu/android/SuperDecoration/images/download.svg?version=1.0.2) ](https://bintray.com/staticsadhu/android/SuperDecoration/1.0.1/link) [![Build Status](https://travis-ci.org/sh1tge/SuperDecoration.svg?branch=master)](https://travis-ci.org/sh1tge/SuperDecoration)
-
+[ ![Download](https://api.bintray.com/packages/staticsadhu/android/SuperDecoration/images/download.svg?version=1.0.3) ](https://bintray.com/staticsadhu/android/SuperDecoration/1.0.3/link) [![Build Status](https://travis-ci.org/sh1tge/SuperDecoration.svg?branch=master)](https://travis-ci.org/sh1tge/SuperDecoration)
 快速设置`RecyclerView`item间间距, 配合此篇文章食用,味道更佳[戳我](https://www.wecando.cc/article/9)
 
 # 特性
@@ -38,10 +37,10 @@
 ```kotlin
         mRvContent.addItemDecoration(
             SuperOffsetDecoration.Builder(layoutManager, this)
-                .setPrimaryEdgeSpace(12F) // 设置与orientation同方向,RecyclerView内间距,orientation为vertical时, 表示 paddingTop,paddingBottom
-                .setSecondaryEdgeSpace(10F)// 设置与orientation垂直方向,RecyclerView内间距,orientation为vertical时, 表示 paddingLeft,paddingRight
-                .setPrimarySpace(8F)// 设置与orientation同方向,ItemView的间距
-                .setSecondarySpace(4F)// 设置与orientation垂直方向,ItemView的间距, LinearLayoutManager无效
+                .setMainAxisEdgeSpace(12F) // 设置与orientation同方向,RecyclerView内间距,orientation为vertical时, 表示 paddingTop,paddingBottom
+                .setCrossAxisEdgeSpace(10F)// 设置与orientation垂直方向,RecyclerView内间距,orientation为vertical时, 表示 paddingLeft,paddingRight
+                .setMainAxisSpace(8F)// 设置与orientation同方向,ItemView的间距
+                .setCrossAxisSpace(4F)// 设置与orientation垂直方向,ItemView的间距, LinearLayoutManager无效
                 .build()
         )
 
@@ -51,7 +50,12 @@
 
 | 名称        |     说明      | 
 | :-------------: |:-------------:|
-|setPrimaryEdgeSpace|  设置与orientation同方向,RecyclerView内间距|
-|setSecondaryEdgeSpace| 设置与orientation垂直方向,RecyclerView内间距|
-|setPrimarySpace| 设置与orientation同方向,ItemView的间距|
-|setSecondarySpace| 设置与orientation垂直方向,ItemView的间距, LinearLayoutManager无效|
+|setMainAxisEdgeSpace|  设置与orientation同方向,RecyclerView内间距|
+|setCrossAxisEdgeSpace| 设置与orientation垂直方向,RecyclerView内间距|
+|setMainAxisSpace| 设置与orientation同方向,ItemView的间距|
+|setCrossAxisSpace| 设置与orientation垂直方向,ItemView的间距, LinearLayoutManager无效|
+|toggleDividerMode|  设置与orientation同方向,RecyclerView内间距|
+|setPaddingLeft| 设置分割线paddingLeft|
+|setPaddingRight| 设置分割线paddingRight|
+|setDividerColor| 设置分割线前景颜色|
+|setBackgroundColor| 设置分割线背景颜色|

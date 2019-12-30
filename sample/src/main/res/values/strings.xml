@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">SuperDecoration</string>
+    <string name="mainAxisEdgeSpace">主轴边距</string>
+    <string name="crossAxisEdgeSpace">交叉轴边距</string>
+    <string name="mainAxisSpace">主轴Item间距</string>
+    <string name="crossAxisSpace">交叉轴Item间距</string>
+    <string name="update">更新</string>
+    <string name="vertical">垂直</string>
+    <string name="horizontal">水平</string>
+    <string name="isReverseLayout">反转layout</string>
+    <string name="dividerPaddingLeft">分割线paddingLeft</string>
+    <string name="dividerPaddingRight">分割线paddingRight</string>
+    <string name="dividerColor">分割线颜色</string>
+    <string name="backgroundColor">背景颜色</string>
+    <string name="showDivider">显示分割线</string>
 </resources>

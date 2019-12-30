@@ -1,55 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:background="@android:color/white"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
-
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="primaryEdgeSpace"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mainAxisEdgeSpace" />
 
             <EditText
-                    android:textSize="14sp"
-                    android:text="20"
-                    android:inputType="numberDecimal"
-                    android:id="@+id/mEtPrimaryEdge"
-                    android:layout_width="35dp"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/mEtMainAxisEdge"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="20"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
         <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="secondaryEdgeSpace"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/crossAxisEdgeSpace" />
 
             <EditText
-                    android:textSize="14sp"
-                    android:text="12"
-                    android:inputType="numberDecimal"
-                    android:id="@+id/mEtSecondaryEdge"
-                    android:layout_width="35dp"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/mEtCrossAxisEdge"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="12"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -57,49 +56,49 @@
     </LinearLayout>
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="primarySpace"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mainAxisSpace" />
 
             <EditText
-                    android:id="@+id/mEtPrimary"
-                    android:layout_width="35dp"
-                    android:text="4"
-                    android:textSize="14sp"
-                    android:inputType="numberDecimal"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/mEtMainAxis"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="4"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
         <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="secondarySpace"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/crossAxisSpace" />
 
             <EditText
-                    android:inputType="numberDecimal"
-                    android:id="@+id/mEtSecondary"
-                    android:text="10"
-                    android:textSize="14sp"
-                    android:layout_width="35dp"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/mEtCrossAxis"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="10"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -107,57 +106,169 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dividerColor" />
+
+            <View
+                android:id="@+id/mViewChooseDividerColor"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="4dp"
+                android:background="#F6F6F6" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/backgroundColor" />
+
+            <View
+                android:id="@+id/mViewChooseBackgroundColor"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="4dp"
+                android:background="@color/colorAccent" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dividerPaddingLeft" />
+
+            <EditText
+                android:id="@+id/mEtDividePaddingLeft"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="12"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dividerPaddingRight" />
+
+            <EditText
+                android:id="@+id/mEtDividePaddingRight"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="12"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <RadioGroup
-                android:id="@+id/mGroup"
+            android:id="@+id/mGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/mBtnVertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/vertical" />
 
             <RadioButton
-                    android:id="@+id/mBtnVertical"
-                    android:layout_width="wrap_content"
-                    android:checked="true"
-                    android:layout_height="wrap_content"
-                    android:text="vertical"/>
-
-            <RadioButton
-                    android:id="@+id/mBtnHorizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="horizontal"/>
+                android:id="@+id/mBtnHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/horizontal" />
         </RadioGroup>
 
         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/mCheckReverse"
                 android:layout_width="wrap_content"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/isReverseLayout" />
 
             <CheckBox
-                    android:id="@+id/mCheckReverse"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="isReverseLayout"/>
-
-            <CheckBox
-                    android:id="@+id/mCheckSpan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="hasSpan"/>
+                android:id="@+id/mCheckSpan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="hasSpan" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/mCheckDivider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/showDivider" />
+        </LinearLayout>
 
         <Button
-                android:id="@+id/mBtnUpdate"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="update"
-                android:layout_height="wrap_content"/>
+            android:id="@+id/mBtnUpdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/update" />
     </LinearLayout>
 </LinearLayout>

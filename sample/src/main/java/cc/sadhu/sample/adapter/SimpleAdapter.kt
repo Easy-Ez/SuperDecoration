@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import cc.sadhu.sample.R
 import cc.sadhu.sample.bean.Item
 
-class SimpleAdapter(val list: List<Item>, private val isHorizontal: Boolean = false) :
+class SimpleAdapter(val list: List<Item>, val isHorizontal: Boolean = false) :
     RecyclerView.Adapter<SimpleHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimpleHolder {
         return SimpleHolder(

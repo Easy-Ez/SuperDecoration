@@ -30,7 +30,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api 'androidx.appcompat:appcompat:1.0.2'
+    api 'androidx.appcompat:appcompat:1.1.0'
     api 'com.google.android.material:material:1.0.0'
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
@@ -47,8 +47,9 @@ publish {
     groupId = 'cc.wecando'// jcenter上的路径
     artifactId = 'SuperDecoration'  // 仓库里面的名称
 //    uploadName = 'SuperDecoration'
-    publishVersion = '1.0.2'
+    publishVersion = '1.0.3'
     desc = 'Super ItemDecoration for RecyclerView, Support LinearLayoutManager and GridLayoutManager!'
     website = 'https://github.com/sh1tge/SuperDecoration'
     licences = ['Apache-2.0']
+    // ./gradlew clean build bintrayUpload -PbintrayUser=staticsadhu -PbintrayKey=BINTRAY_KEY -PdryRun=false
 }

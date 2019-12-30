@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">SuperDecoration</string>
+    <string name="mainAxisEdgeSpace">mainAxisEdgeSpace</string>
+    <string name="crossAxisEdgeSpace">crossAxisEdgeSpace</string>
+    <string name="mainAxisSpace">mainAxisSpace</string>
+    <string name="crossAxisSpace">SuperDecoration</string>
+    <string name="update">update</string>
+    <string name="vertical">vertical</string>
+    <string name="horizontal">horizontal</string>
+    <string name="isReverseLayout">isReverseLayout</string>
+    <string name="dividerPaddingLeft">dividerPaddingLeft</string>
+    <string name="dividerPaddingRight">dividerPaddingRight</string>
+    <string name="dividerColor">dividerColor</string>
+    <string name="backgroundColor">backgroundColor</string>
+    <string name="showDivider">showDivider</string>
+
+</resources>

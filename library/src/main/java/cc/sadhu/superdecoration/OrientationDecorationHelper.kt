@@ -1,54 +1,56 @@
 package cc.sadhu.superdecoration
 
+import android.graphics.Canvas
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import cc.sadhu.neteasecloudmusic.view.derocation.SpaceInfoData
 
 interface OrientationDecorationHelper {
 
-    fun needOffset(outRect: Rect, view: View, parent: RecyclerView): Boolean
+    fun needOffset(view: View, parent: RecyclerView): Boolean
 
     fun setOffset(outRect: Rect, childAdapterPosition: Int, itemCount: Int)
 
+    fun drawDivide(c: Canvas, builder: SuperOffsetDecoration.Builder, parent: RecyclerView, state: RecyclerView.State)
+
     companion object {
         fun createOrientationDecorationHelper(
-            info: SpaceInfoData,
+            builder: SuperOffsetDecoration.Builder,
             layoutManager: LinearLayoutManager
         ): OrientationDecorationHelper {
             return when (layoutManager) {
                 // 一种是GridLayoutManager
                 is GridLayoutManager -> createGridHelper(
-                    info,
+                    builder,
                     layoutManager
                 )
                 // 一种是LinearLayoutManager,
                 else -> createLinearHelper(
-                    info,
+                    builder,
                     layoutManager
                 )
             }
         }
 
         private fun createLinearHelper(
-            info: SpaceInfoData,
+            builder: SuperOffsetDecoration.Builder,
             layoutManager: LinearLayoutManager
         ): OrientationDecorationHelper {
-            return object : SimpleLinearDecorationHelper(info, layoutManager) {
-                override fun needOffset(outRect: Rect, view: View, parent: RecyclerView): Boolean {
+            return object : SimpleLinearDecorationHelper(builder, layoutManager) {
+                override fun needOffset(view: View, parent: RecyclerView): Boolean {
                     return true
                 }
             }
         }
 
         private fun createGridHelper(
-            info: SpaceInfoData,
+            builder: SuperOffsetDecoration.Builder,
             layoutManager: LinearLayoutManager
         ): OrientationDecorationHelper {
-            return object : SimpleGridDecorationHelper(info, layoutManager) {
-                override fun needOffset(outRect: Rect, view: View, parent: RecyclerView): Boolean {
+            return object : SimpleGridDecorationHelper(builder, layoutManager) {
+                override fun needOffset(view: View, parent: RecyclerView): Boolean {
                     return true
                 }
             }
