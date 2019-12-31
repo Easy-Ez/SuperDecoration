@@ -3,6 +3,7 @@ package cc.sadhu.superdecoration
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
+import android.graphics.RectF
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -93,68 +94,168 @@ abstract class SimpleLinearDecorationHelper(
         state: RecyclerView.State
     ) {
         val childCount = parent.childCount
-        var left: Float
-        var top: Float
-        var right: Float
-        var bottom: Float
         val rectPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-        // 最后一个暂时不画分割线
-        for (i in 0 until childCount - 1) {
+        val rectF = RectF()
+
+        for (i in 0 until childCount) {
             val child = parent.getChildAt(i)
             if (needOffset(child, parent)) {
                 if (mLayoutManager.orientation == RecyclerView.VERTICAL) {
-                    left = 0F
-                    top = child.bottom.toFloat()
-                    right = parent.width.toFloat()
-                    bottom = top + builder.mMainAxisSpace
-                    // 如果没有padding, 则不需要要背景色
-                    if (builder.paddingLeft == 0 && builder.paddingRight == 0) {
-                        // 直接画divider
-                        rectPaint.color = builder.mDividerColor
-                        c.drawRect(left, top, right, bottom, rectPaint)
-                    } else {
-                        // 先画背景色色,一般是白色
-                        rectPaint.color = builder.mBackgroundColor
-                        c.drawRect(left, top, right, bottom, rectPaint)
-                        // 再画分割线颜色,注意处理左右padding
-                        rectPaint.color = builder.mDividerColor
-                        c.drawRect(
-                            left + builder.paddingLeft,
-                            top,
-                            right - builder.paddingRight,
-                            bottom,
-                            rectPaint
-                        )
+                    rectF.left = 0F
+                    rectF.right = parent.width.toFloat()
+                    when (i) {
+                        0 -> {
+                            // 首行 判断是否需要画BeginningDivider
+                            rectF.bottom = child.top.toFloat()
+                            rectF.top = rectF.bottom - builder.mMainAxisSpace
+                            drawBeginningDivider(
+                                c,
+                                rectF,
+                                builder,
+                                rectPaint,
+                                true
+                            )
+                            // 判断是否需要画MiddleDivider
+                            rectF.top = child.bottom.toFloat()
+                            rectF.bottom = rectF.top + builder.mMainAxisSpace
+                            drawMiddleDivider(c, rectF, builder, rectPaint, true)
+                        }
+                        childCount - 1 -> {
+                            // 最后一行 判断是否需要画MiddleDivider
+                            rectF.top = child.bottom.toFloat()
+                            rectF.bottom = rectF.top + builder.mMainAxisSpace
+                            drawEndDivider(c, rectF, builder, rectPaint, true)
+                        }
+                        else -> {
+                            // 除首尾行 判断是否需要画MiddleDivider
+                            rectF.top = child.bottom.toFloat()
+                            rectF.bottom = rectF.top + builder.mMainAxisSpace
+                            drawMiddleDivider(c, rectF, builder, rectPaint, true)
+                        }
                     }
                 } else if (mLayoutManager.orientation == RecyclerView.HORIZONTAL) {
-                    left = child.right.toFloat()
-                    top = 0F
-                    right = left + builder.mMainAxisSpace
-                    bottom = parent.height.toFloat()
-                    // 如果没有padding, 则不需要要背景色
-                    if (builder.paddingLeft == 0 && builder.paddingRight == 0) {
-                        // 直接画divider
-                        rectPaint.color = builder.mDividerColor
-                        c.drawRect(left, top, right, bottom, rectPaint)
-                    } else {
-                        // 先画背景色色,一般是白色
-                        rectPaint.color = builder.mBackgroundColor
-                        c.drawRect(left, top, right, bottom, rectPaint)
-                        // 再画分割线颜色,注意处理左右padding
-                        rectPaint.color = builder.mDividerColor
-                        c.drawRect(
-                            left,
-                            top + builder.paddingLeft,
-                            right,
-                            bottom - builder.paddingRight,
-                            rectPaint
-                        )
+                    rectF.top = 0F
+                    rectF.bottom = parent.height.toFloat()
+                    when (i) {
+                        0 -> {
+                            // 首行 判断是否需要画BeginningDivider
+                            rectF.right = child.left.toFloat()
+                            rectF.left = rectF.right - builder.mMainAxisSpace
+                            drawBeginningDivider(
+                                c,
+                                rectF,
+                                builder,
+                                rectPaint,
+                                false
+                            )
+                            // 判断是否需要画MiddleDivider
+                            rectF.left = child.right.toFloat()
+                            rectF.right = rectF.left + builder.mMainAxisSpace
+                            drawMiddleDivider(c, rectF, builder, rectPaint, false)
+                        }
+                        childCount - 1 -> {
+                            // 最后一行 判断是否需要画MiddleDivider
+                            rectF.left = child.right.toFloat()
+                            rectF.right = rectF.left + builder.mMainAxisSpace
+                            drawEndDivider(c, rectF, builder, rectPaint, false)
+                        }
+                        else -> {
+                            // 除首行 判断是否需要画MiddleDivider
+                            rectF.left = child.right.toFloat()
+                            rectF.right = rectF.left + builder.mMainAxisSpace
+                            drawMiddleDivider(c, rectF, builder, rectPaint, false)
+                        }
                     }
+
                 }
 
             }
         }
+    }
+
+    private fun drawBeginningDivider(
+        c: Canvas,
+        rectF: RectF,
+        builder: SuperOffsetDecoration.Builder,
+        rectPaint: Paint,
+        isVertical: Boolean
+    ) {
+        if (builder.mShowDividers.and(SuperOffsetDecoration.SHOW_DIVIDER_BEGINNING) != 0) {
+            drawDivider(
+                c,
+                rectF,
+                builder,
+                rectPaint,
+                isVertical
+            )
+        }
+    }
+
+    private fun drawEndDivider(
+        c: Canvas,
+        rectF: RectF,
+        builder: SuperOffsetDecoration.Builder,
+        rectPaint: Paint,
+        isVertical: Boolean
+    ) {
+        if (builder.mShowDividers.and(SuperOffsetDecoration.SHOW_DIVIDER_END) != 0) {
+            drawDivider(
+                c,
+                rectF,
+                builder,
+                rectPaint,
+                isVertical
+            )
+        }
+    }
+
+    private fun drawMiddleDivider(
+        c: Canvas,
+        rectF: RectF,
+        builder: SuperOffsetDecoration.Builder,
+        rectPaint: Paint,
+        isVertical: Boolean
+    ) {
+        if (builder.mShowDividers.and(SuperOffsetDecoration.SHOW_DIVIDER_MIDDLE) != 0) {
+            drawDivider(
+                c,
+                rectF,
+                builder,
+                rectPaint,
+                isVertical
+            )
+        }
+    }
+
+    private fun drawDivider(
+        c: Canvas,
+        rectF: RectF,
+        builder: SuperOffsetDecoration.Builder,
+        rectPaint: Paint,
+        isVertical: Boolean
+    ) {
+        // 如果没有padding, 则不需要要背景色
+        if (builder.paddingLeft == 0 && builder.paddingRight == 0) {
+            // 直接画divider
+            rectPaint.color = builder.mDividerColor
+            c.drawRect(rectF.left, rectF.top, rectF.right, rectF.bottom, rectPaint)
+        } else {
+            // 先画背景色色,一般是白色
+            rectPaint.color = builder.mBackgroundColor
+            c.drawRect(rectF.left, rectF.top, rectF.right, rectF.bottom, rectPaint)
+            // 再画分割线颜色,注意处理左右padding
+            rectPaint.color = builder.mDividerColor
+            c.drawRect(
+                if (isVertical) rectF.left + builder.paddingLeft else rectF.left,
+                if (isVertical) rectF.top else rectF.top + builder.paddingLeft,
+                if (isVertical) rectF.right - builder.paddingRight else rectF.right,
+                if (isVertical) rectF.bottom else rectF.bottom - builder.paddingRight,
+                rectPaint
+            )
+        }
 
     }
+
+
 }
 

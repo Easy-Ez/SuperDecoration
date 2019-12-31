@@ -76,11 +76,35 @@ class LinearActivity : AppCompatActivity() {
 
             }
         }
-
-
-
+        initListener()
         initData()
     }
+
+    private fun initListener() {
+        mCheckDividerNone.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                mCheckDividerBeginning.isChecked = false
+                mCheckDividerMiddle.isChecked = false
+                mCheckDividerEnd.isChecked = false
+            }
+        }
+        mCheckDividerBeginning.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                mCheckDividerNone.isChecked = false
+            }
+        }
+        mCheckDividerMiddle.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                mCheckDividerNone.isChecked = false
+            }
+        }
+        mCheckDividerEnd.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                mCheckDividerNone.isChecked = false
+            }
+        }
+    }
+
 
     private fun update() {
         val layoutManager = LinearLayoutManager(
@@ -90,13 +114,28 @@ class LinearActivity : AppCompatActivity() {
         )
         mRvContent.layoutManager = layoutManager
         mRvContent.removeItemDecorationAt(0)
+        val showDivide = if (mCheckDividerNone.isChecked) {
+            SuperOffsetDecoration.SHOW_DIVIDER_NONE
+        } else {
+            var tmp = 0
+            if (mCheckDividerBeginning.isChecked) {
+                tmp = tmp.or(SuperOffsetDecoration.SHOW_DIVIDER_BEGINNING)
+            }
+            if (mCheckDividerMiddle.isChecked) {
+                tmp = tmp.or(SuperOffsetDecoration.SHOW_DIVIDER_MIDDLE)
+            }
+            if (mCheckDividerEnd.isChecked) {
+                tmp = tmp.or(SuperOffsetDecoration.SHOW_DIVIDER_END)
+            }
+            tmp
+        }
         val builder = SuperOffsetDecoration.Builder(layoutManager, this)
             .setMainAxisSpace(UIUtils.dp2px(mEtMainAxis.text.toString().toInt()))
             .setCrossAxisSpace(UIUtils.dp2px(mEtCrossAxis.text.toString().toInt()))
             .setMainAxisEdgeSpace(UIUtils.dp2px(mEtMainAxisEdge.text.toString().toInt()))
             .setCrossAxisEdgeSpace(UIUtils.dp2px(mEtCrossAxisEdge.text.toString().toInt()))
-            .toggleDividerMode(mCheckDivider.isChecked)
-        if (mCheckDivider.isChecked) {
+            .setShowDividers(showDivide)
+        if (showDivide != 0) {
             builder.setPaddingLeft(UIUtils.dp2px(mEtDividePaddingLeft.text.toString().toInt()))
                 .setPaddingRight(UIUtils.dp2px(mEtDividePaddingRight.text.toString().toInt()))
                 .setDividerColor(mDividerColor)
@@ -126,14 +165,28 @@ class LinearActivity : AppCompatActivity() {
             mCheckReverse.isChecked
         )
         mRvContent.layoutManager = layoutManager
-
+        val showDivide = if (mCheckDividerNone.isChecked) {
+            SuperOffsetDecoration.SHOW_DIVIDER_NONE
+        } else {
+            val tmp = 0
+            if (mCheckDividerBeginning.isChecked) {
+                tmp.or(SuperOffsetDecoration.SHOW_DIVIDER_BEGINNING)
+            }
+            if (mCheckDividerMiddle.isChecked) {
+                tmp.or(SuperOffsetDecoration.SHOW_DIVIDER_MIDDLE)
+            }
+            if (mCheckDividerEnd.isChecked) {
+                tmp.or(SuperOffsetDecoration.SHOW_DIVIDER_END)
+            }
+            tmp
+        }
         val builder = SuperOffsetDecoration.Builder(layoutManager, this)
             .setMainAxisSpace(UIUtils.dp2px(mEtMainAxis.text.toString().toInt()))
             .setCrossAxisSpace(UIUtils.dp2px(mEtCrossAxis.text.toString().toInt()))
             .setMainAxisEdgeSpace(UIUtils.dp2px(mEtMainAxisEdge.text.toString().toInt()))
             .setCrossAxisEdgeSpace(UIUtils.dp2px(mEtCrossAxisEdge.text.toString().toInt()))
-            .toggleDividerMode(mCheckDivider.isChecked)
-        if (mCheckDivider.isChecked) {
+            .setShowDividers(showDivide)
+        if (showDivide != 0) {
             builder.setPaddingLeft(UIUtils.dp2px(mEtDividePaddingLeft.text.toString().toInt()))
                 .setPaddingRight(UIUtils.dp2px(mEtDividePaddingRight.text.toString().toInt()))
                 .setDividerColor(mDividerColor)

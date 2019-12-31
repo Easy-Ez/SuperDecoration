@@ -1,6 +1,7 @@
 package cc.sadhu.sample.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,7 @@ class GridActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_linear)
+        mLlDivider.visibility = View.GONE
         mBtnUpdate.setOnClickListener {
             update()
         }

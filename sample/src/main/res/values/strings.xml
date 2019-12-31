@@ -12,5 +12,8 @@
     <string name="dividerPaddingRight">分割线paddingRight</string>
     <string name="dividerColor">分割线颜色</string>
     <string name="backgroundColor">背景颜色</string>
-    <string name="showDivider">显示分割线</string>
+    <string name="showDividerBeginning">顶部显示分割线</string>
+    <string name="showDividerMiddle">item间显示分割线</string>
+    <string name="showDividerEnd">底部显示分割线</string>
+    <string name="showDividerNone">不限显示分割线</string>
 </resources>

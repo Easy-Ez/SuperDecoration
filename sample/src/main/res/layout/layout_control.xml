@@ -252,16 +252,38 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/mLlDivider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <CheckBox
-                android:id="@+id/mCheckDivider"
+                android:id="@+id/mCheckDividerNone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
-                android:text="@string/showDivider" />
+                android:text="@string/showDividerNone" />
+
+            <CheckBox
+                android:id="@+id/mCheckDividerBeginning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/showDividerBeginning" />
+
+            <CheckBox
+                android:id="@+id/mCheckDividerMiddle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/showDividerMiddle" />
+
+            <CheckBox
+                android:id="@+id/mCheckDividerEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/showDividerEnd" />
         </LinearLayout>
 
         <Button

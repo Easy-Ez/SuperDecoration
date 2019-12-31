@@ -12,6 +12,8 @@
     <string name="dividerPaddingRight">dividerPaddingRight</string>
     <string name="dividerColor">dividerColor</string>
     <string name="backgroundColor">backgroundColor</string>
-    <string name="showDivider">showDivider</string>
-
+    <string name="showDividerBeginning">showDividerBeginning</string>
+    <string name="showDividerMiddle">showDividerMiddle</string>
+    <string name="showDividerEnd">showDividerEnd</string>
+    <string name="showDividerNone">showDividerNone</string>
 </resources>

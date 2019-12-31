@@ -54,7 +54,7 @@
 |setCrossAxisEdgeSpace| 设置与orientation垂直方向,RecyclerView内间距|
 |setMainAxisSpace| 设置与orientation同方向,ItemView的间距|
 |setCrossAxisSpace| 设置与orientation垂直方向,ItemView的间距, LinearLayoutManager无效|
-|toggleDividerMode|  设置与orientation同方向,RecyclerView内间距|
+|setShowDividers|  设置显示分割线模式类似于LinearLayout#setShowDividers方法,SHOW_DIVIDER_NONE = 0,SHOW_DIVIDER_BEGINNING = 1,SHOW_DIVIDER_MIDDLE = 2,SHOW_DIVIDER_END = 4|
 |setPaddingLeft| 设置分割线paddingLeft|
 |setPaddingRight| 设置分割线paddingRight|
 |setDividerColor| 设置分割线前景颜色|

@@ -3,9 +3,9 @@ package cc.sadhu.superdecoration
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Rect
-import android.util.TypedValue
 import android.view.View
 import androidx.annotation.ColorInt
+import androidx.annotation.IntDef
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -37,7 +37,7 @@ class SuperOffsetDecoration(private val builder: Builder) :
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDraw(c, parent, state)
         val childCount = parent.childCount
-        if (childCount > 1 && builder.mDividerMode) {
+        if (childCount > 0 && builder.mShowDividers != SHOW_DIVIDER_NONE) {
             mOrientationDecorationHelper.drawDivide(c, builder, parent, state)
         }
     }
@@ -54,7 +54,7 @@ class SuperOffsetDecoration(private val builder: Builder) :
         internal var mBackgroundColor: Int = 0xFFFFFFFF.toInt()
         internal var paddingLeft = 0
         internal var paddingRight = 0
-        internal var mDividerMode = false// 是否画分割线
+        internal var mShowDividers = SHOW_DIVIDER_NONE
 
 //mainAxisAlignment and crossAxisAlignment
 
@@ -79,11 +79,6 @@ class SuperOffsetDecoration(private val builder: Builder) :
         fun setCrossAxisEdgeSpace(crossAxisEdgeSpace: Int): Builder {
             this.mCrossAxisEdgeSpace =
                 crossAxisEdgeSpace
-            return this
-        }
-
-        fun toggleDividerMode(showDivider: Boolean): Builder {
-            this.mDividerMode = showDivider
             return this
         }
 
@@ -113,11 +108,48 @@ class SuperOffsetDecoration(private val builder: Builder) :
             return this
         }
 
+        /**
+         * Set how dividers should be shown between items in this layout
+         *
+         * @param [showDividers] One or more of [SHOW_DIVIDER_BEGINNING],[SHOW_DIVIDER_MIDDLE] or [SHOW_DIVIDER_END]
+         * to show dividers, [SHOW_DIVIDER_NONE] to show no dividers.
+         */
+        fun setShowDividers(@DividerMode showDividers: Int): Builder {
+            this.mShowDividers = showDividers
+            return this
+        }
+
 
         fun build(): SuperOffsetDecoration {
             return SuperOffsetDecoration(this)
         }
 
+    }
+
+    companion object {
+        @IntDef(
+            flag = true,
+            value = [SHOW_DIVIDER_NONE, SHOW_DIVIDER_BEGINNING, SHOW_DIVIDER_MIDDLE, SHOW_DIVIDER_END]
+        )
+        @kotlin.annotation.Retention(AnnotationRetention.SOURCE)
+        annotation class DividerMode
+
+        /**
+         * Don't show any dividers.
+         */
+        const val SHOW_DIVIDER_NONE = 0
+        /**
+         * Show a divider at the beginning of the group.
+         */
+        const val SHOW_DIVIDER_BEGINNING = 1
+        /**
+         * Show dividers between each item in the group.
+         */
+        const val SHOW_DIVIDER_MIDDLE = 2
+        /**
+         * Show a divider at the end of the group.
+         */
+        const val SHOW_DIVIDER_END = 4
     }
 
 
